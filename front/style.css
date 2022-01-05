@@ -1,0 +1,120 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  background-color: black;
+}
+
+.calculadora {
+  max-width: 250px;
+  max-height: 400px;
+  display: flex;
+  background-color: rgb(36, 36, 36);
+  flex-direction: column;
+}
+
+.up {
+  background-color: floralwhite;
+  margin: 3px;
+  padding: 3px;
+  width: auto;
+  height: 40px;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px black;
+}
+
+.up h2{
+  margin-left: 10px;
+  padding-bottom:  10px;
+}
+
+.down {
+  display: flex;
+  flex-direction: row;
+}
+
+.down_buttom {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.buttom {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttom button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  border-style: none;
+  background-color:floralwhite;
+  padding: 5px;
+  margin-left: 15px;
+  box-shadow: 10px 5px 5px black;
+}
+
+.buttom button:hover{
+  background-color:rgb(185, 185, 185);
+}
+
+.buttom_2 button{
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  border-style: none;
+  background-color: floralwhite;
+  padding: 5px;
+  margin-left: 90px;
+  text-align: center;
+  box-shadow: 10px 5px 5px black;
+}
+
+.operation {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#boton {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 3px;
+  border-style: none;
+  background-color: floralwhite;
+  padding: 5px;
+  margin-left: 20px;
+  box-shadow: 10px 5px 5px black;
+  text-align: center;
+}
+
+#boton:hover {
+  background-color:rgb(185, 185, 185);
+}
+
+#calcular {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 3px;
+  border-style: none;
+  background-color: floralwhite;
+  padding: 5px;
+  margin-left: 20px;
+  box-shadow: 10px 5px 5px black;
+  text-align: center;
+}
+
+#calcular:hover {  
+  background-color:rgb(185, 185, 185);
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculadora</title>
+</head>
+<body>
+
+  <div id="app">
+    <div class="calculadora">
+      <section class="up">
+        <h2>{{screen}}</h2>
+      </section>
+      <section class="down">
+        <section class="down_buttom">
+  
+          <div class="buttom">
+            <button @click="agregar(x = '1')"><strong>1</strong></button>
+            <button @click="agregar(x = '2')"><strong>2</strong></button>
+            <button @click="agregar(x = '3')"><strong>3</strong></button>
+          </div>
+    
+          <div class="buttom">
+            <button @click="agregar(x = '4')"><strong>4</strong></button>
+            <button @click="agregar(x = '5')"><strong>5</strong></button>
+            <button @click="agregar(x = '6')"><strong>6</strong></button>
+          </div>
+    
+          <div class="buttom">
+            <button @click="agregar(x = '7')"><strong>7</strong></button>
+            <button @click="agregar(x = '8')"><strong>8</strong></button>
+            <button @click="agregar(x = '9')"><strong>9</strong></button>
+          </div>
+    
+          <div class="buttom">
+            <button @click="agregar(x = '0')"><strong>0</strong></button>
+            <button @click="result()"><strong>=</strong></button>
+            <button @click="eliminar()"><strong>C</strong></button>
+          </div>
+        </section>
+       
+        <section class="operation">
+          <button @click="sumar()" id="boton"><strong>+</strong></button>
+          <button @click="restar()" id="boton"><strong>-</strong></button>
+          <button @click="multiplicar()" id="boton"><strong>*</strong></button>
+          <button @click="dividir()" id="boton"><strong>/</strong></button>
+        </section>
+  
+      </section>
+    </div>
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        state: false,
+        rta: 0,
+        value1: [0],
+        value2: [0],
+        turn: 0,
+        screen: 0,
+        var1: '',
+        var2: '',
+        contador: -1,
+        x: '',
+        op: ''
+      },
+      methods: {
+        agregar: function(x) {
+          numero = (x);
+          if (this.turn == 0) {
+            if (this.value1[0] == 0 && numero != 0) {
+              this.value1[0] = numero;
+              this.contador ++;
+              this.var1 += this.value1[0];
+            } else if (this.value1[0] != 0 && this.contador+1 <= 13) {
+              this.value1.push(numero);
+              this.contador ++;
+              this.var1 += this.value1[this.contador];
+            } else console.log('no se puede');
+            this.screen = this.var1
+          } else if (this.state == true) {
+            this.state = false;
+            this.rta = 0;
+            this.turn = 0;
+            this.value1[0] = numero;
+            this.value2 = [0];
+            this.var1 += this.value1[0];
+            this.var2 = '';
+            this.contador = 0;
+            this.op = '';
+            this.screen = this.var1;
+          } else if (this.contador+1 <= 13) {
+            this.contador = this.value2.length-1;
+            if (this.value2[0] == 0 && numero != 0) {
+              this.value2[0] = numero;
+              this.contador ++;
+              this.var2 += this.value2[0];
+            } else if (this.value2[0] != 0) {
+              this.value2.push(numero);
+              this.contador ++;
+              this.var2 += this.value2[this.contador];
+            } else console.log('no se puede');
+            this.screen = this.var2
+          }
+          
+          
+        },
+        sumar: function() {
+          if (this.var1 != 0) {
+            this.op = 1;
+            this.turn = 1;
+            this.screen = '+'
+            this.contador = -1;
+          } 
+        },
+        restar: function() {
+          if (this.var1 != 0) {
+            this.screen = '-'
+            this.turn = 1;
+            this.op = 2;
+            this.contador = -1;
+          }
+        },
+        multiplicar: function() {
+          if (this.var1 != 0) {
+            this.turn = 1;
+            this.op = 3;
+            this.screen = '*'
+            this.contador = -1;
+          }
+        },
+        dividir: function() {
+          if (this.var1 != 0) {
+            this.turn = 1;
+            this.op = 4;
+            this.screen = '/'
+            this.contador = -1;
+          }
+        },
+        eliminar: function() {
+          this.rta = 0;
+          this.value1 = [0];
+          this.value2 = [0];
+          this.turn = 0;
+          this.screen = 0;
+          this.var1 = '';
+          this.var2 = '';
+          this.contador = -1;
+          this.x = '';
+          this.op = '';
+          this.state = false;
+        },
+        result: function() {
+          if (this.op == 1 && this.var1 != 0) {
+            this.rta = parseInt(this.var1) + parseInt(this.var2);
+            this.state = true;
+            this.var1 = '';
+            this.var2 = '';
+            this.value1 = [0];
+            this.value2 = [0];
+          } else if (this.op == 2 && this.var1 != 0) {
+            this.rta = parseInt(this.var1) - parseInt(this.var2);
+            this.state = true;
+            this.var1 = '';
+            this.var2 = '';
+            this.value1 = [0];
+            this.value2 = [0];
+          } else if (this.op == 3 && this.var1 != 0) {
+            this.rta = parseInt(this.var1) * parseInt(this.var2);
+            this.state = true;
+            this.var1 = '';
+            this.var2 = '';
+            this.value1 = [0];
+            this.value2 = [0];
+          } else if (this.op == 4 && this.var1 != 0) {
+            this.rta = parseInt(this.var1) / parseInt(this.var2);
+            this.state = true;
+            this.var1 = '';
+            this.var2 = '';
+            this.value1 = [0];
+            this.value2 = [0];
+          }
+          this.screen = this.rta
+        }
+      },
+    });
+  </script>
+
+</body>
+</html>

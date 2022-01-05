@@ -1,0 +1,17 @@
+{
+  "name": "calculadora",
+  "version": "1.0.0",
+  "description": "Calculadora test",
+  "main": "app.js",
+  "scripts": {
+    "test": "electron .",
+    "lix": "electron-builder -l",
+    "win": "electron-builder -w"
+  },
+  "author": "Darien Romero <djromero905@misena.edu.co>",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^16.0.6",
+    "electron-builder": "^22.14.5"
+  }
+}
