@@ -1,6 +1,6 @@
 # Calculadora
 
-Calculadora echa con vue, html, css y javascript
+Calculadora hecha con vue, html, css, javascript y electron
 
 ## Instalar
 
@@ -13,7 +13,8 @@ npm run test
 
 #### Para desplegar:
 
-Para linux excribir en la terminal
+Para linux excribir en la terminal:
 npm run lix
 
-Para windows npm run win
+Para windows:
+npm run win
